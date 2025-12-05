@@ -1,9 +1,46 @@
 <!doctype html>
 <html>
   <head>
-    <title>This is the title of the webpage!</title>
+    <title>SCHOOL NIRD</title>
+    <link rel="stylesheet" href="style/HomePage.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script/HomePage.js" defer></script>
   </head>
   <body>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
+    <div id="main-container">
+      <div id="map-wrapper">
+        
+        <div id="enter" class="eye">1</div>
+        <div id="classroom1" class="eye">2</div>
+        <div id="classroom2" class="eye">3</div>
+        <div id="classroom3" class="eye">4</div>
+        <div id="classroom4" class="eye">5</div>
+        <div id="outside" class="eye">6</div>
+
+        <img src="img/School2.png" alt="School Image" id="map-image" />
+        
+      </div>
+    </div>
   </body>
 </html>
+
+<template id="tooltip-template">
+  <div
+    style="
+      position: absolute;
+      padding: 15px 20px;
+      bottom: 55px;
+      width: max-content;
+      max-width: 290px;
+      background-color: white;
+      color: black;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 1000;
+    "
+  >
+    <h3 id="tooltip-title" style="width: 100%; font-size: large;"></h3>
+    <p id="tooltip-text" style="margin-top: 8px;font-size: small;"></p>
+  </div>
+</template>
