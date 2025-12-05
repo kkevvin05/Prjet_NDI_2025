@@ -89,10 +89,36 @@ element.forEach((elementObj, i) => {
   });
 });
 
+let progressFill = document.getElementById('progress-fill');
+let progressMessage = document.getElementById('progress-message');
+
+const messages = [
+  'Commencez votre aventure !',
+  'Bon début ! Continuez comme ça !',
+  'Vous êtes sur la bonne voie !',
+  'Bravo ! Plus que quelques étapes !',
+  'Vous y êtes presque !',
+  'Félicitations ! Mission accomplie ! 🎉'
+];
+
+function updateProgress() {
+  const progress = (currentLevel / (element.length - 1)) * 100;
+  progressFill.style.width = progress + '%';
+  
+  const progressBar = document.getElementById('progress-bar');
+  const barWidth = progressBar.offsetWidth;
+  const messageWidth = progressMessage.offsetWidth;
+  const messagePosition = (progress / 100) * barWidth - (messageWidth / 2);
+  progressMessage.style.left = messagePosition + 'px';
+  progressMessage.textContent = messages[currentLevel] || messages[messages.length - 1];
+}
+
+updateProgress();
 
 function increaseLevel() {
   currentLevel += 1;
   localStorage.setItem('currentLevel', currentLevel.toString());
+  updateProgress();
 }
 
 function resetLevel() {
