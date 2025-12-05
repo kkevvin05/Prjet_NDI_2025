@@ -1,0 +1,107 @@
+/* Reset général */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fonts arcade */
+body {
+  font-family: 'Press Start 2P', monospace;
+  color: #00ff00;
+  background-color: #000000;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Grid / fond rétro animé */
+.background-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(0deg, #0f0 0px, #0f0 1px, transparent 1px, transparent 20px),
+              repeating-linear-gradient(90deg, #0f0 0px, #0f0 1px, transparent 1px, transparent 20px);
+  opacity: 0.05;
+  z-index: -1;
+  animation: moveGrid 20s linear infinite;
+}
+
+@keyframes moveGrid {
+  from {background-position: 0 0, 0 0;}
+  to {background-position: 1000px 0, 0 1000px;}
+}
+
+/* Header style */
+header h1 {
+  font-size: 2em;
+  color: #ff00ff;
+  text-shadow: 2px 2px #00ffff, -2px -2px #00ff00;
+  margin-left: 10%;
+  margin-top: 50px;
+}
+
+/* Texte principal */
+main p {
+  font-size: 0.85em;
+  line-height: 1.7;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px 40px;
+  text-align: justify;
+  background-color: rgba(0,0,0,0.6);
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px #00ff00, 0 0 20px #ff00ff inset;
+  columns: 2;
+  column-gap: 50px;
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+strong {
+  color: #ff00ff;
+  text-shadow: 1px 1px #00ffff;
+}
+
+/* Animation texte néon */
+@keyframes textGlow {
+  0% { text-shadow: 0 0 5px #00ff00, 0 0 10px #ff00ff; }
+  100% { text-shadow: 0 0 10px #00ff00, 0 0 20px #ff00ff; }
+}
+
+/* Conteneur images */
+.images-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin: 40px 0;
+}
+
+/* Linux Logo */
+.linux-logo {
+  width: 150px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Terminal Retro Icon */
+.terminal-icon {
+  width: 120px;
+  animation: float 4s ease-in-out infinite alternate;
+}
+
+/* Recycle Icon */
+.recycle-icon {
+  width: 100px;
+  animation: float 5s ease-in-out infinite alternate-reverse;
+}
+
+/* Animation flottement */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}

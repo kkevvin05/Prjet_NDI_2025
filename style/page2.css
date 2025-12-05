@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('../img/Background_Page2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: scroll;
+  font-family: 'Arial', sans-serif;
+  color: #000000;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin: 150px 0 20px 0;
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+  color: #000000;
+  text-align: left;
+  font-weight: bold;
+  margin-left: 20%;
+  width: fit-content;
+}
+
+p {
+  font-size: 0.95em;
+  line-height: 1.7;
+  max-width: 900px;
+  margin: 0 auto 20px;
+  padding: 30px 50px;
+  background-color: transparent;
+  text-align: justify;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  color: #000000;
+  columns: 2;
+  column-gap: 80px;
+}
+
+img {
+  position: relative;
+  left: 65%;
+  top: -40px;
+  transform: translateX(-50%); 
+  width: 150px;
+  max-width: 1000px;
+}
+
