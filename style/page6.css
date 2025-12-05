@@ -1,0 +1,80 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY – fond vert écoresponsable */
+body {
+  font-family: 'Press Start 2P', monospace;
+  background-color: #0a4d00; /* vert foncé */
+  color: #e0ffe0;
+  min-height: 100vh;
+  padding: 40px 30px;
+  position: relative;
+}
+
+/* Fond quadrillé vert clair */
+.background-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -1;
+}
+
+/* TITRE */
+header h1 {
+  font-size: 2.5em;
+  color: #b6ff8f;
+  text-shadow: 1px 1px #00ff00;
+  margin-left: 10%;
+  margin-top: 50px;
+}
+
+/* PARAGRAPHE */
+main p {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px 35px;
+  line-height: 1.6;
+  font-size: 1em;
+  color: #e0ffe0;
+  background-color: rgba(0,50,0,0.85);
+  border: 2px solid #7fff7f;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,255,0,0.3);
+  text-align: justify;
+}
+
+
+/* BOUTON ÉTAPE SUIVANTE */
+#nextStep {
+  display: block;
+  margin: 40px auto;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: #0a4d00;
+  background: linear-gradient(135deg, #7fff7f, #00ff00);
+  border: 2px solid #b6ff8f;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0,255,0,0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#nextStep:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 25px rgba(0,255,0,0.9);
+  background: linear-gradient(135deg, #00ff00, #7fff7f);
+}
+
+#nextStep:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 10px rgba(0,255,0,0.4);
+}

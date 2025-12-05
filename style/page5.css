@@ -1,0 +1,80 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY – thème bureau */
+body {
+  font-family: 'Press Start 2P', monospace;
+  background-color: #f0f0f0;
+  color: #002f4b;
+  min-height: 100vh;
+  padding: 40px 30px;
+  position: relative;
+}
+
+/* Fond quadrillé discret */
+.background-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+      linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -1;
+}
+
+/* TITRE */
+header h1 {
+  font-size: 2.5em;
+  color: #004b61;
+  text-shadow: 1px 1px #a0d8ef;
+  margin-left: 10%;
+  margin-top: 50px;
+}
+
+/* PARAGRAPHE */
+main p {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px 35px;
+  line-height: 1.6;
+  font-size: 1em;
+  color: #002f4b;
+  background-color: rgba(255,255,255,0.9);
+  border: 2px solid #004b61;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 75, 97, 0.3);
+  text-align: justify;
+}
+
+
+/* BOUTON ÉTAPE SUIVANTE */
+#nextStep {
+  display: block;
+  margin: 40px auto;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: #f0f0f0;
+  background: linear-gradient(135deg, #004b61, #007a9e);
+  border: 2px solid #00aaff;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 122, 158, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#nextStep:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 25px rgba(0, 122, 158, 0.9);
+  background: linear-gradient(135deg, #006a85, #00b5dd);
+}
+
+#nextStep:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 10px rgba(0, 122, 158, 0.4);
+}

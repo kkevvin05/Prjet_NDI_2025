@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/page5.css">
+    <title>Action 5 - Transition Numérique Écoresponsable</title>
+</head>
+<body>
+
+    <!-- Fond quadrillé style open space -->
+    <div class="background-grid"></div>
+
+    <header>
+        <h1>Action numéro 5 :</h1>
+    </header>
+
+    <main>
+        <p>
+            Accompagner les <strong>établissements et collectivités</strong> dans une <strong>transition numérique écoresponsable</strong> consiste à les guider vers des pratiques numériques durables.<br><br>
+            Cela implique d’adopter des outils collaboratifs partagés, de prolonger la durée de vie des équipements et de limiter la consommation d’énergie liée au numérique.<br><br>
+            Dans un environnement de bureau ou open space, cela passe par la mutualisation des ressources, la sensibilisation des équipes et l’utilisation de logiciels libres et reconditionnés.<br><br>
+            L’objectif est de créer un <strong>écosystème numérique plus durable</strong>, de réduire l’impact environnemental et de favoriser l’innovation pédagogique et administrative.<br><br>
+            Chaque geste, de l’entretien du matériel à la rationalisation des usages, contribue à un numérique responsable et bénéfique pour tous.
+        </p>
+
+
+        <!-- Bouton Étape suivante -->
+        <button id="nextStep">Étape suivante</button>
+
+    </main>
+
+    <script>
+        // Incrémentation du niveau
+        let currentLevel = parseInt(localStorage.getItem("currentLevel")) || 0;
+
+        document.getElementById("nextStep").addEventListener("click", () => {
+            currentLevel++;
+            localStorage.setItem("currentLevel", currentLevel);
+            window.location.href = "../HomePage.html";
+        });
+    </script>
+
+</body>
+</html>

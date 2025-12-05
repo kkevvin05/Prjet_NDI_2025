@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/page6.css">
+    <title>Action 6 - Solutions Numériques Locales</title>
+</head>
+<body>
+
+    <!-- Fond quadrillé vert -->
+    <div class="background-grid"></div>
+
+    <header>
+        <h1>Action numéro 6 :</h1>
+    </header>
+
+    <main>
+        <p>
+            Favoriser la <strong>co-construction de solutions numériques locales, ouvertes et autonomes</strong> permet de créer des outils adaptés aux besoins réels des établissements et des collectivités.<br><br>
+            En collaborant avec les acteurs locaux, on peut développer des logiciels libres, des plateformes éducatives et des ressources numériques durables, faciles à maintenir et à adapter.<br><br>
+            Cette approche renforce l’autonomie des utilisateurs, encourage l’innovation et réduit la dépendance aux solutions propriétaires, tout en favorisant un <strong>écosystème numérique responsable et durable</strong>.<br><br>
+            Les initiatives locales contribuent également à la mutualisation des bonnes pratiques, à la formation des équipes et à la valorisation des compétences numériques au sein des collectivités.
+        </p>
+
+
+        <!-- Bouton Étape suivante -->
+        <button id="nextStep">Étape suivante</button>
+
+    </main>
+
+    <script>
+        // Incrémentation du niveau
+        let currentLevel = parseInt(localStorage.getItem("currentLevel")) || 0;
+
+        document.getElementById("nextStep").addEventListener("click", () => {
+            currentLevel++;
+            localStorage.setItem("currentLevel", currentLevel);
+            window.location.href = "../HomePage.html";
+        });
+    </script>
+
+</body>
+</html>
