@@ -132,7 +132,7 @@ function increaseLevel() {
   currentLevel += 1;
   console.log('Level increased to:', currentLevel);
   localStorage.setItem('currentLevel', currentLevel.toString());
-  window.location.href = "../HomePage.html"; 
+  window.location.href = "../index.html"; 
 }
 
 function resetLevel() {
