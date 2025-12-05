@@ -45,13 +45,17 @@ const element = [
 const lockText = 'Finnissez le niveau precedent pour debloquer ce niveau';
 
 const template = document.getElementById('tooltip-template');
-const clone = template.content.cloneNode(true);
-const tooltip = clone.querySelector('div');
+let tooltip = null;
 
+if (template) {
+  const clone = template.content.cloneNode(true);
+  tooltip = clone.querySelector('div');
+}
 
 function createTooltipListener(elementObj, title) {
   return {
     enter: () => {
+      if (!tooltip) return;
       tooltip.querySelector('h3').textContent = title;
       tooltip.querySelector('p').textContent = elementObj.text;
       elementObj.element.appendChild(tooltip);
@@ -59,6 +63,7 @@ function createTooltipListener(elementObj, title) {
       elementObj.element.style.transform = 'scale(1.1)';
     },
     leave: () => {
+      if (!tooltip) return;
       if (tooltip.parentElement) {
         elementObj.element.style.zIndex = '2';
         tooltip.parentElement.removeChild(tooltip);
@@ -68,26 +73,29 @@ function createTooltipListener(elementObj, title) {
   };
 }
 
-element.forEach((elementObj, i) => {
-  const isUnlocked = currentLevel >= i;
-  
-  if (isUnlocked) {
-    elementObj.element.textContent = i + 1;
-  } else {
-    elementObj.element.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="35" width="20" viewBox="0 0 384 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M128 96l0 64 128 0 0-64c0-35.3-28.7-64-64-64s-64 28.7-64 64zM64 160l0-64C64 25.3 121.3-32 192-32S320 25.3 320 96l0 64c35.3 0 64 28.7 64 64l0 224c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 224c0-35.3 28.7-64 64-64z"/></svg>';
-  }
-  
-  const tooltipText = isUnlocked ? elementObj.title : lockText;
-  const listeners = createTooltipListener(elementObj, tooltipText);
-  
-  elementObj.element.addEventListener('mouseenter', listeners.enter);
-  elementObj.element.addEventListener('mouseleave', listeners.leave);
-  elementObj.element.addEventListener('click', () => {
-    if (isUnlocked && elementObj.pageUrl) {
-      window.location.href = elementObj.pageUrl;
+// Seulement exécuter si on est sur la page d'accueil (éléments existent)
+if (enter && classroom1 && classroom2 && classroom3 && classroom4 && outside) {
+  element.forEach((elementObj, i) => {
+    const isUnlocked = currentLevel >= i;
+    
+    if (isUnlocked) {
+      elementObj.element.textContent = i + 1;
+    } else {
+      elementObj.element.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="35" width="20" viewBox="0 0 384 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M128 96l0 64 128 0 0-64c0-35.3-28.7-64-64-64s-64 28.7-64 64zM64 160l0-64C64 25.3 121.3-32 192-32S320 25.3 320 96l0 64c35.3 0 64 28.7 64 64l0 224c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 224c0-35.3 28.7-64 64-64z"/></svg>';
     }
+    
+    const tooltipText = isUnlocked ? elementObj.title : lockText;
+    const listeners = createTooltipListener(elementObj, tooltipText);
+    
+    elementObj.element.addEventListener('mouseenter', listeners.enter);
+    elementObj.element.addEventListener('mouseleave', listeners.leave);
+    elementObj.element.addEventListener('click', () => {
+      if (isUnlocked && elementObj.pageUrl) {
+        window.location.href = elementObj.pageUrl;
+      }
+    });
   });
-});
+}
 
 let progressFill = document.getElementById('progress-fill');
 let progressMessage = document.getElementById('progress-message');
@@ -102,6 +110,11 @@ const messages = [
 ];
 
 function updateProgress() {
+  const progressFill = document.getElementById('progress-fill');
+  const progressMessage = document.getElementById('progress-message');
+  
+  if (!progressFill || !progressMessage) return;
+  
   const progress = (currentLevel / (element.length - 1)) * 100;
   progressFill.style.width = progress + '%';
   
@@ -119,7 +132,7 @@ function increaseLevel() {
   currentLevel += 1;
   console.log('Level increased to:', currentLevel);
   localStorage.setItem('currentLevel', currentLevel.toString());
-  window.location.href = "../HomePage.html";
+  window.location.href = "../HomePage.html"; 
 }
 
 function resetLevel() {
@@ -141,28 +154,30 @@ let menu = document.getElementById("menu");
 let menuContent = document.getElementById("menu-content");
 let menuDropdown = document.getElementById("menu-dropdown");
 
-menu.addEventListener("mouseenter", () => {
-  menuContent.classList.remove("hidden");
-  menuContent.classList.add("visible");
-  menuDropdown.classList.remove("hidden");
-  menuDropdown.classList.add("visible");
-});
+if (menu && menuContent && menuDropdown) {
+  menu.addEventListener("mouseenter", () => {
+    menuContent.classList.remove("hidden");
+    menuContent.classList.add("visible");
+    menuDropdown.classList.remove("hidden");
+    menuDropdown.classList.add("visible");
+  });
 
-menu.addEventListener("mouseleave", (e) => {
-  if (!menuDropdown.contains(e.relatedTarget)) {
+  menu.addEventListener("mouseleave", (e) => {
+    if (!menuDropdown.contains(e.relatedTarget)) {
+      menuContent.classList.remove("visible");
+      menuContent.classList.add("hidden");
+      menuDropdown.classList.remove("visible");
+      menuDropdown.classList.add("hidden");
+    }
+  });
+
+  menuDropdown.addEventListener("mouseleave", () => {
     menuContent.classList.remove("visible");
     menuContent.classList.add("hidden");
     menuDropdown.classList.remove("visible");
     menuDropdown.classList.add("hidden");
-  }
-});
-
-menuDropdown.addEventListener("mouseleave", () => {
-  menuContent.classList.remove("visible");
-  menuContent.classList.add("hidden");
-  menuDropdown.classList.remove("visible");
-  menuDropdown.classList.add("hidden");
-});
+  });
+}
 
 
 
