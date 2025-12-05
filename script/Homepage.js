@@ -14,14 +14,33 @@ const element = [
   {
     element : enter,
     title : 'Le point de départ de votre aventure pour découvrir la démarche NIRD',
-    text : 'Apprenez comment jsp mettre une description ici',
+    text : 'Sensibiliser les équipes éducatives et les élèves à la sobriété numérique',
     pageUrl : 'pages/page1.html'
   }, 
-  {element: classroom1, title: 'Classroom 1'}, 
-  {element: classroom2, title: 'Classroom 2'}, 
-  {element: classroom3, title: 'Classroom 3'}, 
-  {element: classroom4, title: 'Classroom 4'}, 
-  {element: outside, title: 'Outside'}
+  {
+    element: classroom1,
+    title: 'Encourager le réemploi et le reconditionnement du matériel',
+    pageUrl: 'pages/page2.html'
+  },
+  {
+    element: classroom2, 
+    title: 'Promouvoir l’usage de Linux afin de lutter contre l’obsolescence programmée',
+    pageUrl: 'pages/page3.html'
+  }, 
+  {
+    element: classroom3, 
+    title: 'Mutualiser les ressources et outils libres via la forge des communs numériques éducatifs',
+    pageUrl: 'pages/page4.html'
+  }, 
+  {element: classroom4, 
+    title: 'Accompagner les établissements et collectivités dans une transition numérique écoresponsable',
+    pageUrl: 'pages/page5.html'
+  }, 
+  {
+    element: outside,
+    title: 'Favoriser la co-construction de solutions numériques locales,ouvertes et autonomes',
+    pageUrl: 'pages/page6.html'
+  }
 ];
 const lockText = 'Finnissez le niveau precedent pour debloquer ce niveau';
 

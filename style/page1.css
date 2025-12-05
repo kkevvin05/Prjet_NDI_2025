@@ -37,8 +37,11 @@ p {
   color: #000000;
 }
 
+/* show images (don't hide them globally) */
 img {
-  display: none;
+  display: block;
+  margin: 20px auto;
+  max-width: 220px;
 }
 
 /* BOUTON ÉTAPE SUIVANTE — ambiance chimie */

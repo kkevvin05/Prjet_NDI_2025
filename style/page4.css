@@ -56,8 +56,8 @@ h1 {
 }
 
 @keyframes neonPulse {
-  from { text-shadow: 0 0 10px #67d8ff; }
-  to   { text-shadow: 0 0 25px #35b7ff; }
+  from { text-shadow: 0 0 10px #6780ff; }
+  to   { text-shadow: 0 0 25px #3564ff; }
 }
 
 /* PARAGRAPHE STYLE CHIMIE */

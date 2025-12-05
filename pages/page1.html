@@ -45,6 +45,7 @@ Changer quelques habitudes suffit pour réduire notre impact.<br> Ensemble, nous
     let currentLevel = parseInt(localStorage.getItem("currentLevel")) || 0;
 
     document.getElementById("nextStep").addEventListener("click", () => {
+        console.log("Niveau actuel avant incrémentation :", currentLevel);
         // Augmente le niveau
         currentLevel++;
 
