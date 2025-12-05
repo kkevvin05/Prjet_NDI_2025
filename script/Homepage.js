@@ -117,8 +117,9 @@ updateProgress();
 
 function increaseLevel() {
   currentLevel += 1;
+  console.log('Level increased to:', currentLevel);
   localStorage.setItem('currentLevel', currentLevel.toString());
-  updateProgress();
+  window.location.href = "../HomePage.html";
 }
 
 function resetLevel() {

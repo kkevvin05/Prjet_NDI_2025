@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/page1.css">
     <title>Page 1</title>
+    <script src="../script/Homepage.js" defer></script>
 </head>
 <body>
     <h1>Action numéro 1 :</h1>
@@ -38,24 +39,8 @@ Changer quelques habitudes suffit pour réduire notre impact.<br> Ensemble, nous
     </p>
 
     <!-- Bouton Étape suivante -->
-<button id="nextStep">Étape suivante</button>
+<button id="nextStep" onclick="increaseLevel()">Étape suivante</button>
 
-<script>
-    // Réception du niveau actuel ou initialisation à 0
-    let currentLevel = parseInt(localStorage.getItem("currentLevel")) || 0;
-
-    document.getElementById("nextStep").addEventListener("click", () => {
-        console.log("Niveau actuel avant incrémentation :", currentLevel);
-        // Augmente le niveau
-        currentLevel++;
-
-        // Sauvegarde du nouveau niveau
-        localStorage.setItem("currentLevel", currentLevel);
-
-        // Retour vers la page d'accueil
-        window.location.href = "../HomePage.html"; 
-    });
-</script>
 
 </body>
 </html>
