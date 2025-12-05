@@ -1,4 +1,4 @@
-let currentLevel = 0;
+let currentLevel = Number(localStorage.getItem('currentLevel') || 0);
 
 
 const enter = document.getElementById('enter');
@@ -7,12 +7,15 @@ const classroom2 = document.getElementById('classroom2');
 const classroom3 = document.getElementById('classroom3');
 const classroom4 = document.getElementById('classroom4');
 const outside = document.getElementById('outside');
+const mapWrapper = document.getElementById('map-wrapper');
+const svg = document.getElementById('connection-lines');
 
 const element = [
   {
     element : enter,
     title : 'Le point de départ de votre aventure pour découvrir la démarche NIRD',
-    text : 'Apprenez comment jsp mettre une description ici'
+    text : 'Apprenez comment jsp mettre une description ici',
+    pageUrl : 'pages/page1.html'
   }, 
   {element: classroom1, title: 'Classroom 1'}, 
   {element: classroom2, title: 'Classroom 2'}, 
@@ -27,7 +30,6 @@ const clone = template.content.cloneNode(true);
 const tooltip = clone.querySelector('div');
 
 
-
 function createTooltipListener(elementObj, title) {
   return {
     enter: () => {
@@ -39,7 +41,7 @@ function createTooltipListener(elementObj, title) {
     },
     leave: () => {
       if (tooltip.parentElement) {
-        elementObj.element.style.zIndex = '1';
+        elementObj.element.style.zIndex = '2';
         tooltip.parentElement.removeChild(tooltip);
       }
       elementObj.element.style.transform = 'scale(1)';
@@ -61,4 +63,105 @@ element.forEach((elementObj, i) => {
   
   elementObj.element.addEventListener('mouseenter', listeners.enter);
   elementObj.element.addEventListener('mouseleave', listeners.leave);
+  elementObj.element.addEventListener('click', () => {
+    if (isUnlocked && elementObj.pageUrl) {
+      window.location.href = elementObj.pageUrl;
+    }
+  });
+});
+
+
+function increaseLevel() {
+  currentLevel += 1;
+  localStorage.setItem('currentLevel', currentLevel.toString());
+}
+
+function resetLevel() {
+  currentLevel = 0;
+  localStorage.setItem('currentLevel', '0');
+  location.reload();
+}
+
+const connections = [
+  ['enter', 'classroom1'],
+  ['classroom1', 'classroom2'],
+  ['classroom2', 'classroom3'],
+  ['classroom3', 'classroom4'],
+  ['classroom4', 'outside'],
+];
+
+
+let menu = document.getElementById("menu");
+let menuContent = document.getElementById("menu-content");
+let menuDropdown = document.getElementById("menu-dropdown");
+
+menu.addEventListener("mouseenter", () => {
+  menuContent.classList.remove("hidden");
+  menuContent.classList.add("visible");
+  menuDropdown.classList.remove("hidden");
+  menuDropdown.classList.add("visible");
+});
+
+menu.addEventListener("mouseleave", (e) => {
+  if (!menuDropdown.contains(e.relatedTarget)) {
+    menuContent.classList.remove("visible");
+    menuContent.classList.add("hidden");
+    menuDropdown.classList.remove("visible");
+    menuDropdown.classList.add("hidden");
+  }
+});
+
+menuDropdown.addEventListener("mouseleave", () => {
+  menuContent.classList.remove("visible");
+  menuContent.classList.add("hidden");
+  menuDropdown.classList.remove("visible");
+  menuDropdown.classList.add("hidden");
+});
+
+
+
+function getCenter(el, containerRect) {
+  const rect = el.getBoundingClientRect();
+  return {
+    x: rect.left - containerRect.left + rect.width / 2,
+    y: rect.top - containerRect.top + rect.height / 2,
+  };
+}
+
+function drawConnections() {
+  if (!mapWrapper || !svg) return;
+
+  const containerRect = mapWrapper.getBoundingClientRect();
+  svg.setAttribute('width', containerRect.width);
+  svg.setAttribute('height', containerRect.height);
+  svg.setAttribute('viewBox', `0 0 ${containerRect.width} ${containerRect.height}`);
+
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+  connections.forEach(([fromId, toId]) => {
+    const fromEl = document.getElementById(fromId);
+    const toEl = document.getElementById(toId);
+    if (!fromEl || !toEl) return;
+
+    const from = getCenter(fromEl, containerRect);
+    const to = getCenter(toEl, containerRect);
+
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', from.x);
+    line.setAttribute('y1', from.y);
+    line.setAttribute('x2', to.x);
+    line.setAttribute('y2', to.y);
+    line.setAttribute('stroke', 'rgba(255,255,255,0.8)');
+    line.setAttribute('stroke-width', '2.5');
+    line.setAttribute('stroke-dasharray', '8 8');
+    line.setAttribute('stroke-linecap', 'round');
+    svg.appendChild(line);
+  });
+}
+
+const resizeObserver = new ResizeObserver(() => drawConnections());
+if (mapWrapper) resizeObserver.observe(mapWrapper);
+window.addEventListener('resize', drawConnections);
+window.addEventListener('load', () => {
+  requestAnimationFrame(drawConnections);
 });
