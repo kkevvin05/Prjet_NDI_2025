@@ -39,6 +39,8 @@ body, html {
   aspect-ratio: 2496 / 1728; 
   max-height: 100vh;
   max-width: calc(100vh * (2496 / 1728)); 
+  display: flex;
+  justify-content: center;
 }
 
 #map-image {
@@ -195,6 +197,39 @@ body, html {
   transform: scale(0.95);
 }
 
+#progress-bar {
+  position: absolute;
+  top: 10px;
+  width: 50%;
+  height: 8px;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 4;
+  border-radius: 4px;
+}
+
+#progress-fill {
+  width: 0%;
+  height: 100%;
+  background-color: yellow;
+  transition: width 0.5s ease-in-out;
+  border-radius: 4px; 
+}
+
+#progress-message {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  transition: left 0.5s ease-in-out;
+  pointer-events: none;
+  z-index: 5;
+}
+
 
 @media screen and (max-width: 1000px) {
   #enter {
@@ -214,5 +249,33 @@ body, html {
   #enter {
     top: 58%;
     right: 36%;
+  }
+}
+
+/* Car Animation */
+.car-animation {
+  animation: driveCar 10s linear infinite;
+}
+
+@keyframes driveCar {
+  0% {
+    right: 0%;
+    top: 45%;
+    transform: scaleX(1);
+  }
+  50% {
+    right: 57%;
+    top: 93%;
+    transform: scaleX(1);
+  }
+  51% {
+    right: 57%;
+    top: 93%;
+    transform: scaleX(-1);
+  }
+  100% {
+    right: 20%;
+    top: 120%;
+    transform: scaleX(-1);
   }
 }
