@@ -25,10 +25,28 @@
         </p>
 
         <div class="images-container">
-            <img src="../img/linux.png" alt="Linux Logo" class="linux-logo">
-            <img src="../img/terminal.png" alt="Terminal Retro" class="terminal-icon">
-            <img src="../img/recycle.png" alt="Recycle Icon" class="recycle-icon">
+            <img src="../img/Logo_linux.png" alt="Linux Logo" class="linux-logo">
         </div>
+
+        <!-- Bouton Étape suivante -->
+<button id="nextStep">Étape suivante</button>
+
+<script>
+    // Réception du niveau actuel ou initialisation à 0
+    let currentLevel = parseInt(localStorage.getItem("currentLevel")) || 0;
+
+    document.getElementById("nextStep").addEventListener("click", () => {
+        // Augmente le niveau
+        currentLevel++;
+
+        // Sauvegarde du nouveau niveau
+        localStorage.setItem("currentLevel", currentLevel);
+
+        // Retour vers la page d'accueil
+        window.location.href = "../HomePage.html"; 
+    });
+</script>
+
     </main>
 </body>
 </html>

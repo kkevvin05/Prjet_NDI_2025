@@ -41,3 +41,30 @@ img {
   display: none;
 }
 
+/* BOUTON ÉTAPE SUIVANTE — ambiance chimie */
+#nextStep {
+  margin: 40px auto;
+  display: block;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: #d3f7ff;
+  background: linear-gradient(135deg, #004b61, #008fb4);
+  border: 2px solid #6edcff;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 150, 255, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#nextStep:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 25px rgba(0, 200, 255, 0.9);
+  background: linear-gradient(135deg, #006a85, #00b5dd);
+}
+
+#nextStep:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 10px rgba(0, 150, 255, 0.4);
+}

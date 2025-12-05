@@ -1,0 +1,110 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BACKGROUND — laboratoire chimie */
+body {
+  background: url("../img/chimie_lab_bg.jpg") center/cover no-repeat;
+  font-family: 'Courier New', monospace;
+  color: #e0f7ff;
+  padding: 40px 30px;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* CALQUE QUADRILLAGE — toujours visible */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(rgba(150, 220, 255, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(150, 220, 255, 0.25) 1px, transparent 1px);
+
+  background-size: 40px 40px;
+  z-index: 1; /* au-dessus de l’image mais sous le contenu */
+}
+
+/* CALQUE FUMÉE CHIMIQUE (au-dessus du quadrillage) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* TITRE STYLE CHIMIE */
+h1 {
+  position: relative;
+  z-index: 3;
+  font-size: 3em;
+  margin: 70px 0 40px;
+  color: #5863ff;
+  text-shadow: 0 0 45px #5863ff, 0 0 45px #5863ff;
+  border-left: 6px solid #5863ff;
+  padding-left: 20px;
+  width: fit-content;
+  animation: neonPulse 2.5s infinite alternate;
+}
+
+@keyframes neonPulse {
+  from { text-shadow: 0 0 10px #67d8ff; }
+  to   { text-shadow: 0 0 25px #35b7ff; }
+}
+
+/* PARAGRAPHE STYLE CHIMIE */
+p {
+  position: relative;
+  z-index: 3;
+  background: rgba(0, 10, 20, 0.55);
+  border: 2px solid rgba(100, 200, 255, 0.4);
+  backdrop-filter: blur(4px);
+  padding: 25px 35px;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+  font-size: 1.05em;
+  color: #d9f8ff;
+  box-shadow: 0 0 12px rgba(0, 150, 255, 0.4);
+  border-radius: 8px;
+}
+
+
+
+/* BOUTON ÉTAPE SUIVANTE */
+#nextStep {
+  position: relative;
+  z-index: 3;
+  margin: 40px auto;
+  display: block;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: #d3f7ff;
+  background: linear-gradient(135deg, #004b61, #008fb4);
+  border: 2px solid #6edcff;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 150, 255, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#nextStep:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 25px rgba(0, 200, 255, 0.9);
+  background: linear-gradient(135deg, #006a85, #00b5dd);
+}
+
+#nextStep:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 10px rgba(0, 150, 255, 0.4);
+}

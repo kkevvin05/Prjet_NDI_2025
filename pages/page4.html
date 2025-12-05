@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/page4.css">
+    <title>Action 4 - Forge des communs</title>
+</head>
+<body>
+    <!-- Fond chimie avec tubes et réactifs -->
+    <div class="background-lab"></div>
+
+    <header>
+        <h1>Action numéro 4 :</h1>
+    </header>
+
+    <main>
+        <p>
+            Mutualiser les <strong>ressources et outils libres</strong> via la <strong>Forge des communs numériques éducatifs</strong> permet de créer un véritable laboratoire collaboratif.<br><br>
+            Les enseignants peuvent partager des expériences, des TP, des supports et des logiciels libres, ce qui réduit le temps de préparation et évite de réinventer la roue.<br><br>
+            Les élèves bénéficient d’un accès facile à des ressources variées, favorisant la collaboration et l’apprentissage actif.<br><br>
+            Grâce à cette mutualisation, l’établissement s’inscrit dans une démarche durable et responsable, en utilisant des outils numériques libres et pérennes.<br><br>
+            Chaque contribution enrichit le commun, et chaque utilisation renforce la culture scientifique et numérique.
+        </p>
+
+                <!-- Bouton Étape suivante -->
+        <button id="nextStep">Étape suivante</button>
+
+        <script>
+            // Réception du niveau actuel ou initialisation à 0
+            let currentLevel = parseInt(localStorage.getItem("currentLevel")) || 0;
+
+            document.getElementById("nextStep").addEventListener("click", () => {
+                // Augmente le niveau
+                currentLevel++;
+
+                // Sauvegarde du nouveau niveau
+                localStorage.setItem("currentLevel", currentLevel);
+
+                // Retour vers la page d'accueil
+                window.location.href = "../HomePage.html"; 
+            });
+        </script>
+
+    </main>
+</body>
+</html>
